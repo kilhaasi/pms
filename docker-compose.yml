@@ -1,6 +1,7 @@
 version: '2'
 
   plex:
+   build: ./
    image: kilhaasi/pms
    container_name: pms
    depends_on:
