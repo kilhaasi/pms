@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# Check, if a configuration directory exists
+if [[ -d /config/Library ]]
+then
+ echo "Configuration found, skipping restore of backup"
+else
+ if rclone ls $BACKUP
+ then
+  echo "No configuration found, restoring backup..."
+  rclone copy $BACKUP /plexrestore  --verbose --transfers 4 --checkers 20 --stats 10s
+  cd /config
+  tar -xvzf /plexrestore/*
+ fi
+fi

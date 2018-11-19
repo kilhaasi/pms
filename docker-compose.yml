@@ -1,0 +1,17 @@
+version: '2'
+
+  plex:
+   image: kilhaasi/pms
+   container_name: pms
+   depends_on:
+   - plexdrv
+   volumes:
+   - /Video:/Video:shared
+   - /Transcode:/Transcode
+   - /Docker/Plex-Video/plex_cfg:/config
+   - /root/.rclone.conf:/root/.rclone.conf:RO
+   environment:
+   - TZ=DE
+   - BACKUP=gdrive:/Backup/pms.tar.gz
+   ports:
+   - 32400:32400
