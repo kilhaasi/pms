@@ -10,7 +10,7 @@ services:
    - /Video:/Video:shared
    - /Transcode:/Transcode
    - /Docker/Plex-Video/plex_cfg:/config
-   - /root/.rclone.conf:/root/.rclone.conf:RO
+   - /root/.rclone.conf:/root/.rclone.conf
    environment:
    - TZ=DE
    - BACKUP=gdrive:/Backup/pms.tar.gz

@@ -5,11 +5,11 @@ if [[ -d /config/Library ]]
 then
  echo "Configuration found, skipping restore of backup"
 else
- if rclone ls $BACKUP
+ if rclone ls $BACKUP/pms.tar.gz
  then
   echo "No configuration found, restoring backup..."
-  rclone copy $BACKUP /plexrestore  --verbose --transfers 4 --checkers 20 --stats 10s
+  rclone copy $BACKUP/pms.tar.gz /  --verbose --transfers 4 --checkers 20 --stats 10s
   cd /config
-  tar -xvzf /plexrestore/*
+  tar -xvzf /pms.tar.gz
  fi
 fi
