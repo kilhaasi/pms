@@ -13,6 +13,8 @@ services:
    - ./.rclone.conf:/root/.rclone.conf
    environment:
    - TZ=DE
-   - BACKUP=gdrive:/Backup/pms.tar.gz
+   - BACKUP=gdrive:/Backup/Plex-Dev
+   - CRON=4
+   - PLEX_CLAIM=claim-z3PqezuUozjYLvv7LakC
    ports:
    - 32400:32400

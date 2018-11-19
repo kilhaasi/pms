@@ -13,3 +13,6 @@ else
   tar -xvzf /pms.tar.gz
  fi
 fi
+
+echo "0 $CRON * * * /root/bin/backup-pms" > /root/crontab.txt
+crontab /root/crontab.txt

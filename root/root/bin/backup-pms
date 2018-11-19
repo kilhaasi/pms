@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+# Creates a backup of Plex configuration library and pushes it to the backup repo
+#
+cd /config
+tar -cvzf /pms.tar.gz Library
+
+rclone move /pms.tar.gz $BACKUP --verbose --transfers 4 --checkers 20 --stats 10s
+

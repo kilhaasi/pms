@@ -1,7 +1,6 @@
 #!/usr/bin/with-contenv bash
-# Creating a backup of plex configuration
+# Remove crontab
 
-cd /config
-tar -cvzf /pms.tar.gz Library
+crontab -r
 
-rclone move /pms.tar.gz $BACKUP --verbose --transfers 4 --checkers 20 --stats 10s
+
