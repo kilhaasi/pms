@@ -1,4 +1,4 @@
-FROM plexinc/pms-docker
+FROM linuxserver/plex
 COPY root /
 
 RUN apt update && apt install -y cron
