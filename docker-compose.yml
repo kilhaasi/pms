@@ -1,7 +1,7 @@
 version: '2'
 services:
   plex:
-   build: ./
+#  build: ./
    image: kilhaasi/pms
    container_name: pms
    volumes:
@@ -19,3 +19,10 @@ services:
    - PLEX_CLAIM=claim-z3PqezuUozjYLvv7LakC
    ports:
    - 32400:32400
+   devices:
+   - /dev/fuse
+   privileged: true
+   cap_add:
+   - MKNOD
+   - SYS_ADMIN
+
