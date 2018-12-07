@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # Check, if a configuration directory exists
+cp /etc/rclone.conf /root/.rclone.conf
 if [[ -d /config/Library ]]
 then
  echo "Configuration found, skipping restore of backup"
