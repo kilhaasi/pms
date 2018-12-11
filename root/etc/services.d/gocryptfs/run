@@ -8,7 +8,7 @@ done
 mkdir -pv /Video
 chmod 777 /Video
 
-s6-setuidgid plex gocryptfs -passfile /config/enc-pwd /encrypted/Video/ /Video
+s6-setuidgid plex gocryptfs -passfile /etc/plexdrv/enc-pwd /encrypted/Video/ /Video
 
 
 until false
