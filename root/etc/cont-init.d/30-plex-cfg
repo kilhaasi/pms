@@ -15,5 +15,5 @@ else
  fi
 fi
 
-echo "0 $CRON * * * /root/bin/backup-pms" > /root/crontab.txt
+echo "0 $CRON * * * /root/bin/backup-pms 2>/var/log/backup.err >/var/log/backup.log" > /root/crontab.txt
 crontab /root/crontab.txt
