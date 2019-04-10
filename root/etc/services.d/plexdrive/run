@@ -11,7 +11,7 @@ umask 022
 IFS=" " read -r -a RUN_ARRAY <<< "$RUN_OPTS"
 
 touch /cache/cache.bolt && chmod 666 /cache/cache.bolt
-mount_command="plexdrive mount -c /etc/plexdrv/ --cache-file=/cache/cache.bolt -v 3 --umask=0777 --chunk-size=100M --uid=$PLEX_UID --gid=$PLEX_GID -o allow_other /encrypted ${RUN_ARRAY[@]}"
+mount_command="plexdrive mount -c /etc/plexdrv/ --cache-file=/cache/cache.bolt -v 3 --umask=0777 --chunk-size=10M --uid=$PLEX_UID --gid=$PLEX_GID -o allow_other /encrypted ${RUN_ARRAY[@]}"
 
 echo "Executing => $mount_command"
 mkdir /encrypted /decrypted
