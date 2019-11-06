@@ -1,17 +1,15 @@
 version: '2'
 services:
   plex:
-#  build: ./
-   image: kilhaasi/pms
-   container_name: pms
+   build: ./
+   image: kilhaasi/pms-dev
+   container_name: pms-dev
    volumes:
-   - /Video:/Video:shared
-   - /Transcode:/Transcode
-   - /Docker/Plex-Video/plex_cfg:/config
-   - /Docker/Plex-Video/.rclone.conf:/root/.rclone.conf
-   - /Docker/Plex-Video/plexdrv-cfg:/root/.plexdrive
-   - /Docker/Plex-Video/enc-pwd:/root/enc-pwd
-   - /Docker/Plex-Video/cache:/cache
+    - /Photo:/Photo
+    - /Transcode:/Transcode
+    - /Docker/Plex-Video/plex_cfg:/config
+    - /Docker/Plex-Video/cache:/cache
+    - /Docker/Plex-Video/plexdrv:/etc/plexdrv
    environment:
    - TZ=DE
    - BACKUP=gdrive:/Backup/Plex-Dev

@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bash
-while [ ! -f "/encrypted/Video/gocryptfs.conf" ]
+mkdir /encrypted
+rclone mount --daemon --allow-other gcache:/ /encrypted
+while [ ! -f "/encrypted/gocryptfs.conf" ]
 do
  echo "Waiting for gocryptfs.conf to appear..."
  sleep 1
@@ -8,7 +10,7 @@ done
 mkdir -pv /Video
 chmod 777 /Video
 
-s6-setuidgid plex gocryptfs -passfile /etc/plexdrv/enc-pwd /encrypted/Video/ /Video
+s6-setuidgid plex gocryptfs -passfile /etc/plexdrv/enc-pwd /encrypted/ /Video
 
 
 until false

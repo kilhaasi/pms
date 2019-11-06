@@ -1,7 +1,8 @@
 #!/usr/bin/with-contenv bash
 
 # Check, if a configuration directory exists
-cp /etc/plexdrv/.rclone.conf /root/.rclone.conf
+mkdir -pv  ~/.config/rclone
+cp /etc/plexdrv/rclone.conf ~/.config/rclone/rclone.conf
 if [[ -d /config/Library ]]
 then
  echo "Configuration found, skipping restore of backup"
