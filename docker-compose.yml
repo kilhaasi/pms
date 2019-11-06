@@ -2,8 +2,8 @@ version: '2'
 services:
   plex:
    build: ./
-   image: kilhaasi/pms-dev
-   container_name: pms-dev
+   image: kilhaasi/pms
+   container_name: pms
    volumes:
     - /Photo:/Photo
     - /Transcode:/Transcode
