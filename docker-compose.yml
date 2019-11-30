@@ -5,10 +5,8 @@ services:
    image: kilhaasi/pms
    container_name: pms
    volumes:
-    - /Photo:/Photo
     - /Transcode:/Transcode
     - /Docker/Plex-Video/plex_cfg:/config
-    - /Docker/Plex-Video/cache:/cache
     - /Docker/Plex-Video/plexdrv:/etc/plexdrv
    environment:
    - TZ=DE
@@ -23,4 +21,3 @@ services:
    cap_add:
    - MKNOD
    - SYS_ADMIN
-
