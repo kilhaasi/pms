@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 mkdir /encrypted
-rclone mount --daemon --allow-other gcache:/ /encrypted
+rm -Rf /root/.cache
+rclone mount --daemon --allow-other gcache:/ /encrypted  --log-file /tmp/rclone.log --log-level DEBUG
 while [ ! -f "/encrypted/gocryptfs.conf" ]
 do
  echo "Waiting for gocryptfs.conf to appear..."
