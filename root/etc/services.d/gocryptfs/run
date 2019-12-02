@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 mkdir /encrypted
-rm -Rf /root/.cache
+rm -Rf ~/.cache
 rclone mount --daemon --allow-other --vfs-cache-mode minimal --no-modtime --write-back-cache gcache:/ /encrypted  --log-file /tmp/rclone.log --log-level DEBUG
 while [ ! -f "/encrypted/gocryptfs.conf" ]
 do
