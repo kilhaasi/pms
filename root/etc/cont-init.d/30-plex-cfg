@@ -1,11 +1,18 @@
 #!/usr/bin/with-contenv bash
 
+# Fixed privileges for MacOS
+chmod o+rw /dev/fuse
+
 # Check, if a configuration directory exists
 mkdir -pv  ~/.config/rclone
 cp /etc/plexdrv/rclone.conf ~/.config/rclone/rclone.conf
 if [[ -d /config/Library ]]
 then
- echo "Configuration found, skipping restore of backup"
+ echo "Configuration found, skipping full-restore of backup"
+ echo "Running quick-restore of plex database"
+ rclone copy $BACKUP/pms-db.tar.gz /  --verbose --transfers 4 --checkers 20 --stats 10s
+ cd /config
+ tar -xvzf /pms-db.tar.gz
 else
  if rclone ls $BACKUP/pms.tar.gz
  then
@@ -13,6 +20,10 @@ else
   rclone copy $BACKUP/pms.tar.gz /  --verbose --transfers 4 --checkers 20 --stats 10s
   cd /config
   tar -xvzf /pms.tar.gz
+  echo "Running quick-restore of plex database"
+  rclone copy $BACKUP/pms-db.tar.gz /  --verbose --transfers 4 --checkers 20 --stats 10s
+  cd /config
+  tar -xvzf /pms-db.tar.gz
  fi
 fi
 

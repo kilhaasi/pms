@@ -5,14 +5,15 @@ services:
    image: kilhaasi/pms
    container_name: pms
    volumes:
-    - /Transcode:/Transcode
-    - /Docker/Plex-Video/plex_cfg:/config
-    - /Docker/Plex-Video/plexdrv:/etc/plexdrv
+    - ~/Docker/Plex-Video/plex_cfg:/config
+    - ~/Docker/Plex-Video/plexdrv:/etc/plexdrv
+    - ~/Docker/Plex-Video/video:/mnt/video
    environment:
    - TZ=DE
    - BACKUP=gdrive:/Backup/Plex-Dev
    - CRON=4
-   - PLEX_CLAIM=claim-z3PqezuUozjYLvv7LakC
+#  - PLEX_CLAIM=claim-YHkzWzT_MNnRrX1eLKAk
+   - S6_KILL_FINISH_MAXTIME=20000
    ports:
    - 32400:32400
    devices:

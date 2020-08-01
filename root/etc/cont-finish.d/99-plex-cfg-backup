@@ -1,6 +1,12 @@
 #!/usr/bin/with-contenv bash
-# Remove crontab
 
+# Stopping services
+#s6-svscanctl -t /var/run/s6/services
+
+# Remove crontab
 crontab -r
 
-
+# Creating quick-backup of sqlite3-database
+echo "Creating backup of plex database"
+tar -cvzf /pms-db.tar.gz "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db" "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.blobs.db" "/config/Library/Application Support/Plex Media Server/Preferences.xml"
+rclone move /pms-db.tar.gz $BACKUP --verbose --transfers 4 --checkers 20 --stats 10s
