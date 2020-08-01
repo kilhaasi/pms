@@ -2,5 +2,6 @@
 # Remove crontab
 
 crontab -r
-
-
+echo "Creating backup of plex database"
+tar -cvzf /pms-db.tar.gz "/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases" "/config/Library/Application Support/Plex Media Server/Preferences.xml"
+rclone move /pms-db.tar.gz $BACKUP --verbose --transfers 4 --checkers 20 --stats 10s
