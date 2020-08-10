@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # Stopping services
-#s6-svscanctl -t /var/run/s6/services
+s6-svscanctl -t /var/run/s6/services
 
 # Remove crontab
 crontab -r
