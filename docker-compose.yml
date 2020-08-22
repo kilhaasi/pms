@@ -8,6 +8,7 @@ services:
     - ~/Docker/Plex-Video/plex_cfg:/config
     - ~/Docker/Plex-Video/plexdrv:/etc/plexdrv
     - ~/Docker/Plex-Video/video:/mnt/video
+    - ~/lala:/mnt/lala
    environment:
    - TZ=DE
    - BACKUP=gdrive:/Backup/Plex-Dev
